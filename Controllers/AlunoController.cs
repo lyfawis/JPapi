@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Modelo.Application;
 using Modelo.Application.Interface;
 using Modelo.Domain;
 
@@ -16,7 +17,9 @@ namespace JPapi.Controllers
         {
             _alunoApplication = alunoApplication;
         }
-        [HttpGet("BuscarDadosAluno/{Id}")]
+                
+
+        [HttpGet("BuscarDadosAluno/{id}")]
 
         public async Task<IActionResult> BuscarDadosAluno(int id)
         {
@@ -26,9 +29,9 @@ namespace JPapi.Controllers
                 var aluno = _alunoApplication.BuscarAluno(id);
                 return Ok(aluno);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return BadRequest("Erro");
+                return BadRequest(e.Message);
             }
         }
     }

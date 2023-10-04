@@ -1,4 +1,3 @@
-using JPapi.Controllers;
 using Microsoft.EntityFrameworkCore;
 using Modelo.Infra.Repositorio;
 using Modelo.Infra;
@@ -16,7 +15,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddHttpClient();
-var connectionstring = builder.Configuration.GetConnectionString("Persist Security Info=False;User ID=sa;Initial Catalog=Jovem Programador; MultipleActiveResultSets=true; TrustServerCertificate=True; Data Source=aline\\SQLEXPRESS");
+var connectionstring = builder.Configuration.GetConnectionString("StringConexao");
 builder.Services.AddDbContext<BancoContexto>(options => options.UseSqlServer(connectionstring));
 
 builder.Services.AddScoped<IAlunoApplication, AlunoApplication>();
